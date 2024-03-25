@@ -30,6 +30,13 @@ public class Bullet : MonoBehaviour
             CreateBulletImpactEffect(objectWeHit);
             Destroy(gameObject);
         }
+        if (objectWeHit.gameObject.CompareTag("Beer"))
+        {
+            print("hit a beer bottle");
+            objectWeHit.gameObject.GetComponent<BeerBottle>().Shatter();
+
+            // We will not destroy the bullet on impact, it will get destroyed according to its lifetime
+        }
     }
 
     private void CreateBulletImpactEffect(Collision objectWeHit)
