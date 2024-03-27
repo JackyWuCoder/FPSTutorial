@@ -23,6 +23,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float bulletVelocity = 100.0f;
     [SerializeField] private float bulletPrefabLifeTime = 3.0f;
 
+    public GameObject muzzleEffect;
+
     [SerializeField]
     private enum ShootingMode
     { 
@@ -68,6 +70,8 @@ public class Weapon : MonoBehaviour
 
     private void FireWeapon() 
     {
+        muzzleEffect.GetComponent<ParticleSystem>().Play();
+
         readyToShoot = false;
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
 
